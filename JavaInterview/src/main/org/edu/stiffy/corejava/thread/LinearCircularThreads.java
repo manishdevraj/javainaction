@@ -1,4 +1,4 @@
-package org.edu.stiffy.thread;
+package org.edu.stiffy.corejava.thread;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.edu.stiffy.collections;
+package org.edu.stiffy.corejava.collections;
 
 import java.util.ArrayList;
 import java.util.Collection;

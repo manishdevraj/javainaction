@@ -1,4 +1,4 @@
-package org.edu.stiffy.thread;
+package org.edu.stiffy.corejava.thread;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
