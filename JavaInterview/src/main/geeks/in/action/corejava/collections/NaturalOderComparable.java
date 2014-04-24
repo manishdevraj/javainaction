@@ -3,12 +3,14 @@ package geeks.in.action.corejava.collections;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Natural order comparable based on String length
+ * Natural order comparable based on String length. It also uses Comparator that
+ * can add additional functionality based on comparison nature
  * 
  * @author manishdevraj
  * 
@@ -22,6 +24,10 @@ class Customer implements Comparable<Customer> {
 
 	@Override
 	public String toString() {
+		return name;
+	}
+
+	public String getName() {
 		return name;
 	}
 
@@ -69,6 +75,15 @@ class Customer implements Comparable<Customer> {
 
 	}
 
+	public static Comparator<Customer> StringNameComparator = new Comparator<Customer>() {
+
+		@Override
+		public int compare(Customer o1, Customer o2) {
+			return o1.getName().compareTo(o2.getName());
+		}
+
+	};
+
 }
 
 public class NaturalOderComparable {
@@ -76,13 +91,19 @@ public class NaturalOderComparable {
 	public static void main(String[] args) {
 		List<Customer> customerList = new ArrayList<Customer>();
 		SortedSet<Customer> sortedSet = new TreeSet<Customer>();
-
+		// Using comparable
 		addElement(customerList);
 		addElement(sortedSet);
 		Collections.sort(customerList);
+		System.out.println("##Display List##");
 		displayElement(customerList);
-		System.out.println("");
+		System.out.println("**Display Set**");
 		displayElement(sortedSet);
+
+		// Using comparator
+		Collections.sort(customerList, Customer.StringNameComparator);
+		System.out.println("##Display List as Comparator##");
+		displayElement(customerList);
 	}
 
 	private static void addElement(Collection<Customer> col) {
