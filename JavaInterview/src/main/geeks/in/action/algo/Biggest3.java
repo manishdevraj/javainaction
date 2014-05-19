@@ -1,5 +1,6 @@
 package geeks.in.action.algo;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class Biggest3 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
+		HashSet<Integer> temp = new HashSet<Integer>();
 		System.out.println("Please Enter No. 1");
 		int n1 = scan.nextInt();
 		System.out.println("Please Enter No. 2");
