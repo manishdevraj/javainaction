@@ -2,6 +2,7 @@ package geeks.in.action.corejava.thread;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Print numbers up to N such that each threads prints number in circular
@@ -15,30 +16,41 @@ import java.util.Map;
  * 
  */
 class SignalThread implements Runnable {
-	volatile Integer i = 1;
+	final AtomicInteger index = new AtomicInteger(1);
 
-	volatile String turn = "1";
+	String turn = "1"; // synchronization will take care of visibility
 
 	Map<String, String> sequence = new HashMap<String, String>();
 
-	WaitNotifySignal waitNotifySignal;
+	Object waitNotifySignal;
 
-	public SignalThread(WaitNotifySignal waitNotifySignal) {
+	public SignalThread(Object waitNotifySignal) {
 		this.waitNotifySignal = waitNotifySignal;
 	}
 
 	@Override
 	public void run() {
-		while (i.intValue() <= 10) {
-			if (Thread.currentThread().getName().equalsIgnoreCase(turn)) {
-				System.out.println("Thread: "
-						+ Thread.currentThread().getName() + " --- " + i);
-				i++;
-				turn = getNextTurn(turn);
-				waitNotifySignal.doNotifyAll();
-				waitNotifySignal.doWait();
+		while (index.get() <= 10) {
+			synchronized (waitNotifySignal) {
+				while (!Thread.currentThread().getName().equalsIgnoreCase(turn)) {
+					try {
+						waitNotifySignal.wait();
+					} catch (InterruptedException e) {
+						return;// interrupted means that the thread should stop
+					}
+				}
 			}
 
+			if (index.get() <= 10) {
+				System.out.println("Thread: "
+						+ Thread.currentThread().getName() + " --- "
+						+ index.getAndIncrement());
+			}
+
+			synchronized (waitNotifySignal) {
+				turn = getNextTurn(turn);
+				waitNotifySignal.notifyAll();
+			}
 		}
 	}
 
@@ -52,44 +64,11 @@ class SignalThread implements Runnable {
 
 }
 
-/**
- * Common Wait Notify Signal class
- * 
- * @author manishdevraj
- * 
- */
-class WaitNotifySignal {
-
-	Object monitorObject = new Object();
-
-	boolean wasSignalled = false;
-
-	public void doWait() {
-		synchronized (monitorObject) {
-			while (!wasSignalled) {
-				try {
-					monitorObject.wait();
-				} catch (InterruptedException e) {
-				}
-			}
-			// clear signal and continue running.
-			wasSignalled = false;
-		}
-	}
-
-	public void doNotifyAll() {
-		synchronized (monitorObject) {
-			wasSignalled = true;
-			monitorObject.notify();
-		}
-	}
-}
-
 public class LinearCircularSignalT {
 
 	public static void main(String[] args) {
 
-		SignalThread signalThread = new SignalThread(new WaitNotifySignal());
+		SignalThread signalThread = new SignalThread(new Object());
 		Thread t1 = new Thread(signalThread);
 		t1.setName("1");
 		Thread t2 = new Thread(signalThread);

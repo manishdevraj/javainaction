@@ -2,6 +2,7 @@ package geeks.in.action.corejava.thread;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Print numbers up to N such that each threads prints number in circular
@@ -15,17 +16,17 @@ import java.util.Map;
  * 
  */
 class SeqThread implements Runnable {
-	volatile Integer i = 0;
+	final AtomicInteger index = new AtomicInteger(1);
 	volatile String turn = "1";
 	Map<String, String> sequence = new HashMap<String, String>();
 
 	@Override
 	public void run() {
-		while (true) {
+		while (index.get() <= 10) {
 			if (Thread.currentThread().getName().equalsIgnoreCase(turn)) {
 				System.out.println("Thread: "
-						+ Thread.currentThread().getName() + " --- " + i);
-				i++;
+						+ Thread.currentThread().getName() + " --- "
+						+ index.getAndIncrement());
 				turn = getNextTurn(turn);
 			}
 			try {
