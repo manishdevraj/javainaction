@@ -1,8 +1,8 @@
 package geeks.in.action.algo.lrucache;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -23,7 +23,7 @@ public class LRUCacheImpl<K, V> implements LRUCache<K, V> {
 	private final Queue<K> queue;
 
 	private LRUCacheImpl() {
-		this.map = new HashMap<K, V>();
+		this.map = new ConcurrentHashMap<K, V>();
 		this.queue = new ConcurrentLinkedQueue<K>();
 	}
 
