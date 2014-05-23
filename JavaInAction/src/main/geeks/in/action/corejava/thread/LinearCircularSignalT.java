@@ -9,30 +9,36 @@ import java.util.Map;
  * again. This implementation would allow us to control any number of threads to
  * do sequential ordered execution.
  * 
- * It uses Thread.sleep to idle threads without using explicit signaling
+ * It uses wait() and notifyAll() methods to signal threads
  * 
  * @author manishdevraj
  * 
  */
-class SeqThread implements Runnable {
-	volatile Integer i = 0;
+class SignalThread implements Runnable {
+	volatile Integer i = 1;
+
 	volatile String turn = "1";
+
 	Map<String, String> sequence = new HashMap<String, String>();
+
+	WaitNotifySignal waitNotifySignal;
+
+	public SignalThread(WaitNotifySignal waitNotifySignal) {
+		this.waitNotifySignal = waitNotifySignal;
+	}
 
 	@Override
 	public void run() {
-		while (true) {
+		while (i.intValue() <= 10) {
 			if (Thread.currentThread().getName().equalsIgnoreCase(turn)) {
 				System.out.println("Thread: "
 						+ Thread.currentThread().getName() + " --- " + i);
 				i++;
 				turn = getNextTurn(turn);
+				waitNotifySignal.doNotifyAll();
+				waitNotifySignal.doWait();
 			}
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+
 		}
 	}
 
@@ -46,24 +52,58 @@ class SeqThread implements Runnable {
 
 }
 
-public class LinearCircularThreads {
+/**
+ * Common Wait Notify Signal class
+ * 
+ * @author manishdevraj
+ * 
+ */
+class WaitNotifySignal {
+
+	Object monitorObject = new Object();
+
+	boolean wasSignalled = false;
+
+	public void doWait() {
+		synchronized (monitorObject) {
+			while (!wasSignalled) {
+				try {
+					monitorObject.wait();
+				} catch (InterruptedException e) {
+				}
+			}
+			// clear signal and continue running.
+			wasSignalled = false;
+		}
+	}
+
+	public void doNotifyAll() {
+		synchronized (monitorObject) {
+			wasSignalled = true;
+			monitorObject.notify();
+		}
+	}
+}
+
+public class LinearCircularSignalT {
 
 	public static void main(String[] args) {
 
-		SeqThread seqThread = new SeqThread();
-		Thread t1 = new Thread(seqThread);
+		SignalThread signalThread = new SignalThread(new WaitNotifySignal());
+		Thread t1 = new Thread(signalThread);
 		t1.setName("1");
-		Thread t2 = new Thread(seqThread);
+		Thread t2 = new Thread(signalThread);
 		t2.setName("2");
-		Thread t3 = new Thread(seqThread);
+		Thread t3 = new Thread(signalThread);
 		t3.setName("3");
 		Map<String, String> sequence = new HashMap<String, String>();
 		sequence.put("1", "2");
 		sequence.put("2", "3");
 		sequence.put("3", "1");
-		seqThread.setTurnSequence(sequence);
+		signalThread.setTurnSequence(sequence);
 		t1.start();
 		t2.start();
 		t3.start();
+
 	}
 }
