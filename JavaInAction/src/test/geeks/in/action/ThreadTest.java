@@ -1,6 +1,6 @@
 package geeks.in.action;
 
-import geeks.in.action.corejava.thread.ProduceConsumerLowLevel;
+import geeks.in.action.java.thread.ProduceConsumerLowLevel;
 
 import org.junit.Test;
 

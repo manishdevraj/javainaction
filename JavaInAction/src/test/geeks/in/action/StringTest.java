@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import geeks.in.action.strings.Anagram;
-import geeks.in.action.strings.RemoveDuplicates;
-import geeks.in.action.strings.ReplaceSpace;
-import geeks.in.action.strings.StringInRotation;
-import geeks.in.action.strings.UniqueChars;
+import geeks.in.action.java.strings.Anagram;
+import geeks.in.action.java.strings.RemoveDuplicates;
+import geeks.in.action.java.strings.ReplaceSpace;
+import geeks.in.action.java.strings.StringInRotation;
+import geeks.in.action.java.strings.UniqueChars;
 
 import org.junit.Test;
 

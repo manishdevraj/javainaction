@@ -2,7 +2,7 @@ package geeks.in.action;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
-import geeks.in.action.corejava.memory.StaticClassLoader;
+import geeks.in.action.java.memory.StaticClassLoader;
 
 import java.lang.reflect.InvocationTargetException;
 

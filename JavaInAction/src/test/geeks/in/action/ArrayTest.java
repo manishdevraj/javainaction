@@ -1,7 +1,7 @@
 package geeks.in.action;
 
-import geeks.in.action.strings.ArrayRotate;
-import geeks.in.action.strings.ArrayZeroRowCol;
+import geeks.in.action.java.strings.ArrayRotate;
+import geeks.in.action.java.strings.ArrayZeroRowCol;
 
 import java.util.Arrays;
 
