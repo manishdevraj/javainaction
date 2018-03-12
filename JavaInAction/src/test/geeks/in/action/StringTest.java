@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
 import geeks.in.action.java.strings.Anagram;
 import geeks.in.action.java.strings.RemoveDuplicates;
 import geeks.in.action.java.strings.ReplaceSpace;
@@ -62,6 +63,7 @@ public class StringTest extends BaseTestCase {
 				obj.replaceSpaces(" I am here to check few things "));
 		assertNull(obj.replaceSpaces(null));
 	}
+
 
 	@Test
 	public void testStringInRotation() {
