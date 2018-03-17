@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
 import geeks.in.action.java.strings.Anagram;
+import geeks.in.action.java.strings.FirstReapatedWord;
 import geeks.in.action.java.strings.RemoveDuplicates;
 import geeks.in.action.java.strings.ReplaceSpace;
 import geeks.in.action.java.strings.StringInRotation;
@@ -64,7 +64,6 @@ public class StringTest extends BaseTestCase {
 		assertNull(obj.replaceSpaces(null));
 	}
 
-
 	@Test
 	public void testStringInRotation() {
 		StringInRotation obj = new StringInRotation();
@@ -72,5 +71,17 @@ public class StringTest extends BaseTestCase {
 		assertTrue(obj.isRotation("waterbottle", "erbottlewat"));
 		assertTrue(obj.isRotation("apple", "pleap"));
 		assertFalse(obj.isRotation("apple", "ppale"));
+	}
+
+	@Test
+	public void testFindFirstDupllicateWordInString() {
+		FirstReapatedWord obj = new FirstReapatedWord();
+
+		assertEquals(
+				"had",
+				obj.findFirstReoccuring("Manish had been saying that he had been there"));
+		assertEquals("he", obj.findFirstReoccuring("he had had he"));
+		assertNull(obj.findFirstReoccuring(" I am here to check few things "));
+		assertNull(obj.findFirstReoccuring("I have been saying that"));
 	}
 }
