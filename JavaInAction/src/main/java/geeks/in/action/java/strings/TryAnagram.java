@@ -23,6 +23,25 @@ package geeks.in.action.java.strings;
 public class TryAnagram {
 
     /**
+     * Input Format
+     •	The first line contains an integer, n, denoting the number of elements in a.
+     •	Each line i of the n subsequent lines contains a string describing ai.
+     •	The next line contains an integer, n, denoting the number of elements in b.
+     •	Each line i of the n subsequent lines contains a string describing bi.
+     Constraints
+     •	Each string consists of lowercase English alphabetic letters (i.e., a to z).
+     •	1 ≤ n ≤ 100
+     •	It is guaranteed that a and b contain the same number of elements.
+     •	0 ≤ length of ai, length of bi ≤ 104
+     •	1 ≤ length of ai + length of bi ≤ 104
+     Output Format
+     Return an array of integers where each element i denotes the minimum number of characters
+     you must modify to make ai and bianagrams; if it's not possible to modify the existing characters
+     in ai and bi to make them anagrams, element i should be -1 instead
+
+     */
+
+    /**
      * Check if the two strings have identical counts for each unique char.
      * And if not see if we can replace equivalent chars in second string
      * @param s
