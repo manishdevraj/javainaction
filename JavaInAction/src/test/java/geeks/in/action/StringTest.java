@@ -4,12 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import geeks.in.action.java.strings.Anagram;
-import geeks.in.action.java.strings.FirstReapatedWord;
-import geeks.in.action.java.strings.RemoveDuplicates;
-import geeks.in.action.java.strings.ReplaceSpace;
-import geeks.in.action.java.strings.StringInRotation;
-import geeks.in.action.java.strings.UniqueChars;
+
+import geeks.in.action.java.strings.*;
 
 import org.junit.Test;
 
@@ -83,5 +79,18 @@ public class StringTest extends BaseTestCase {
 		assertEquals("he", obj.findFirstReoccuring("he had had he"));
 		assertNull(obj.findFirstReoccuring(" I am here to check few things "));
 		assertNull(obj.findFirstReoccuring("I have been saying that"));
+	}
+
+	@Test
+	public void testTryAnagramWithMin() {
+		TryAnagram obj = new TryAnagram();
+
+		assertEquals(1, obj.minToMakeAnagram("abdc", "abed"));
+		assertEquals(0, obj.minToMakeAnagram("manish", "anishm"));
+		assertEquals(0, obj.minToMakeAnagram("apple", "ppale"));
+		assertEquals(-1, obj.minToMakeAnagram("a", "aaaaa"));
+		assertEquals(0, obj.minToMakeAnagram("aaa", "aaa"));
+		assertEquals(-1, obj.minToMakeAnagram("", "aaaaa"));
+		assertEquals(-1, obj.minToMakeAnagram("a", null));
 	}
 }

@@ -67,11 +67,11 @@ public class SudokuSolver {
 				final long timeAfter = System.nanoTime();
 
 				if (placedNumbers == 81) {
-					System.out.println("La résolution a duré "
+					System.out.println("La r?solution a dur? "
 							+ ((timeAfter - timeBefore) / 1) + " nanoseconds.");
 				} else {
 					System.out
-							.println("La résolution est impossible. L'opération a duré "
+							.println("La r?solution est impossible. L'op?ration a dur? "
 									+ ((timeAfter - timeBefore) / 100)
 									+ " nanoseconds.");
 				}
@@ -85,7 +85,7 @@ public class SudokuSolver {
 			}
 		} else {
 			System.out
-					.println("Vous devez fournir le chemin du fichier contenant le problème.");
+					.println("Vous devez fournir le chemin du fichier contenant le probl?me.");
 		}
 	}
 
