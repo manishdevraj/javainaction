@@ -1,5 +1,8 @@
 package geeks.in.action;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import geeks.in.action.java.strings.ArrayDuplicate;
 import geeks.in.action.java.strings.ArrayRotate;
 import geeks.in.action.java.strings.ArrayZeroRowCol;
 
@@ -34,4 +37,17 @@ public class ArrayTest extends BaseTestCase {
 				.replace("[[", "[").replace("]]", "]"));
 
 	}
+
+	@Test
+	public void testFindDuplicateIntArray() {
+		ArrayDuplicate obj = new ArrayDuplicate();
+		int[] arr1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		System.out.println(Arrays.toString(arr1));
+		assertFalse(obj.findDuplicate(arr1));
+
+		int[] arr2 = { 1, 2, 3, 4, 5, 2, 7, 8, 9 };
+		System.out.println(Arrays.toString(arr2));
+		assertTrue(obj.findDuplicate(arr2));
+	}
+
 }
