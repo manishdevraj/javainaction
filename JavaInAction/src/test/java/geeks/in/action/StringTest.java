@@ -93,4 +93,18 @@ public class StringTest extends BaseTestCase {
 		assertEquals(-1, obj.minToMakeAnagram("", "aaaaa"));
 		assertEquals(-1, obj.minToMakeAnagram("a", null));
 	}
+
+	;
+	@Test
+	public void testTwinStringsEvenOdd() {
+		TwinStringsEvenOdd obj = new TwinStringsEvenOdd();
+
+		assertEquals("YES", obj.findEvenOddIndexes("abcd", "cdab"));
+		assertEquals("NO", obj.findEvenOddIndexes("manish", "anishm"));
+		assertEquals("YES", obj.findEvenOddIndexes("apple", "ppale"));
+		assertEquals("NO", obj.findEvenOddIndexes("abcd", "acb"));
+		assertEquals("YES", obj.findEvenOddIndexes("aaa", "aaa"));
+		assertEquals("NO", obj.findEvenOddIndexes("", "aaaaa"));
+		assertEquals("NO", obj.findEvenOddIndexes("a", null));
+	}
 }

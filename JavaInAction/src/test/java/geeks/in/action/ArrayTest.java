@@ -3,10 +3,8 @@ package geeks.in.action;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import geeks.in.action.java.strings.ArrayDuplicate;
-import geeks.in.action.java.strings.ArrayMaxFreq;
-import geeks.in.action.java.strings.ArrayRotate;
-import geeks.in.action.java.strings.ArrayZeroRowCol;
+
+import geeks.in.action.java.strings.*;
 
 import java.util.Arrays;
 
@@ -82,6 +80,22 @@ public class ArrayTest extends BaseTestCase {
 		int arr6[] = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 		System.out.println(Arrays.toString(arr6));
 		assertEquals(1, obj.findMaxFrequency(arr6, arr6.length));
+	}
+
+	@Test
+	public void testSubArraySum() {
+		ArraySubArraySum obj = new ArraySubArraySum();
+		long arr[] = {1, 2, 3, 4};
+		System.out.println(Arrays.toString(arr));
+		assertEquals(50, obj.subArraySum(arr));
+
+		long arr1[] = {1, 2, 3};
+		System.out.println(Arrays.toString(arr1));
+		assertEquals(20, obj.subArraySum(arr1));
+
+		long arr2[] = {1, 3, 4};
+		System.out.println(Arrays.toString(arr2));
+		assertEquals(27, obj.subArraySum(arr2));
 	}
 
 }

@@ -9,7 +9,8 @@ package geeks.in.action.java.strings;
  •	SwapOdd: Swap a character at an odd-numbered index with a character at another odd-numbered index.
 
  For example, a = "abcd" and b = "cdab" are twins because we can make them equivalent by performing operations.
- Alternatively, a = "abcd" and b = "bcda" are not twins (operations do not move characters between odd and even indices), and neither are a = "abc"and b = "ab" (no amount of operations will insert a 'c' into string b).
+ Alternatively, a = "abcd" and b = "bcda" are not twins (operations do not move characters between odd and even indices)
+ , and neither are a = "abc"and b = "ab" (no amount of operations will insert a 'c' into string b).
 
  Complete the twins function in the editor below. It has two parameters:
 
@@ -17,7 +18,7 @@ package geeks.in.action.java.strings;
  2.	An array of n strings named b.
 
  The function must return an array of strings where each index i (0 ≤ i < n) contains the string Yes if ai
- and bi are twins or the string Noif they are not.
+ and bi are twins or the string No if they are not.
 
  * Created by manishdevraj on 20/03/18.
  */
@@ -42,4 +43,53 @@ The function must return an array of strings where each index i (0 ≤ i < n) co
 and bi are twins or the string Noif they are not.
 
      */
+
+    private static int MAX_CHAR = 26;
+
+    public String findEvenOddIndexes(final String leftStr, final String rightStr) {
+        if (leftStr == null || rightStr == null) return "NO";
+        if (leftStr.isEmpty() || rightStr.isEmpty()) return "NO";
+        if (leftStr.length() != rightStr.length()) return "NO";
+
+        if(prepareHash(leftStr).equals(prepareHash(rightStr))) return "YES";
+
+        return "NO";
+
+    }
+
+    private String prepareHash(final String str){
+        if (str == null) return "";
+
+        if (str.isEmpty()) return "";
+
+        // hashEven stores the count of even indexed character
+        // for each string hashOdd stores the count of odd
+        // indexed characters for each string
+
+        int[] hashEven = new int[MAX_CHAR];
+        int[] hashOdd = new int[MAX_CHAR];
+        char[] arr = str.toCharArray();
+
+        // creating hash for each string
+        for (int i = 0; i < arr.length; i++) {
+            char c = arr[i];
+            if ((i & 1) == 1) // If index of current character is odd
+                hashOdd[c - 'a']++;
+            else
+                hashEven[c - 'a']++;
+        }
+
+        // For every character from 'a' to 'z', we store its
+        // count at even position followed by a separator,
+        // followed by count at odd position.
+        String encoding = "";
+        for (int i=0; i<MAX_CHAR; i++)
+        {
+            encoding += String.valueOf(hashEven[i]);
+            encoding += String.valueOf('-');
+            encoding += String.valueOf(hashOdd[i]);
+            encoding += String.valueOf('-');
+        }
+        return encoding;
+    }
 }
