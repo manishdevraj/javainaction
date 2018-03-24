@@ -98,4 +98,22 @@ public class ArrayTest extends BaseTestCase {
 		assertEquals(27, obj.subArraySum(arr2));
 	}
 
+	@Test
+	public void testArrayThirdLargestIndex() {
+		ArrayThirdLargestIndex obj = new ArrayThirdLargestIndex();
+		int arr[] = {12, 45, 17, 14, 21};
+		System.out.println(Arrays.toString(arr));
+		assertEquals(2, obj.getThirdLargestIndex(arr));
+
+		int arr1[] = {100, 50, 10, 20, 1};
+		System.out.println(Arrays.toString(arr1));
+		assertEquals(3, obj.getThirdLargestIndex(arr1));
+
+		int arr2[] = {1, 1, 1};
+		System.out.println(Arrays.toString(arr2));
+		assertEquals(-1, obj.getThirdLargestIndex(arr2));
+	}
+
+
+
 }

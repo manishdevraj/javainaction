@@ -1,7 +1,7 @@
 package geeks.in.action.algo;
 
 /**
- * Write an efficient C program to find the sum of contiguous subarray within a
+ * Write an efficient a program to find the sum of contiguous subarray within a
  * one-dimensional array of numbers which has the largest sum
  * 
  * @author manishdevraj

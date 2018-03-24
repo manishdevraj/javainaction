@@ -20,7 +20,7 @@ public class ClockHandAngle {
 					double angle = findAngle(hour, minutes);
 
 					System.out.println("Clock -: " + args[0] + " : " + args[1]
-							+ " has angle of " + angle + "¼");
+							+ " has angle of " + angle + "?");
 				} else {
 					System.err.println("Invalid values :- " + args[0] + " : "
 							+ args[1]);
