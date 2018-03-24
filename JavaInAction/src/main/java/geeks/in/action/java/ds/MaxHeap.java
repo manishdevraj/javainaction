@@ -7,7 +7,6 @@ import java.util.Arrays;
  */
 public class MaxHeap {
     int[] data = {};
-    int heapSize = data.length;
 
     public void buildMaxHeap(int[] arr){
         data = arr;
@@ -57,8 +56,8 @@ public class MaxHeap {
         return root;
     }
 
-    // Function to return k'th smallest element in a given array
-    public int kthSmallest(int arr[], int n, int k)
+    // Function to return k'th largest element in a given array
+    public int kthLargest(int arr[], int n, int k)
     {
 
         if(n < k) return Integer.MAX_VALUE;
@@ -78,12 +77,11 @@ public class MaxHeap {
         return (data.length > 0) ? data[0] : Integer.MAX_VALUE;
     }
 
-    // Driver program to test above methods
     public static void main(String[] args)
     {
         int arr[] = {12, 3, 5, 7, 19};
         System.out.println("Original array " + Arrays.toString(arr));
         MaxHeap obj = new MaxHeap();
-        System.out.println("K'th smallest element is " + obj.kthSmallest(arr, arr.length, 3));
+        System.out.println("K'th smallest element is " + obj.kthLargest(arr, arr.length, 3));
     }
 }
