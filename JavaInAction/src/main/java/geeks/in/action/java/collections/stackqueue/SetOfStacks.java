@@ -72,6 +72,14 @@ public class SetOfStacks {
         throw new Exception("Stack is empty");
     }
 
+    /**
+     * Use this for object chaining, remove top from index stack
+     * and then remove bottom from index + 1, if any. And add it
+     * to index stack top to fill in gap and keep stack in line
+     * @param index
+     * @param removeTop
+     * @return
+     */
     public int leftShift(int index,  boolean removeTop){
         DStack<Integer> stack = stacks.get(index);
 

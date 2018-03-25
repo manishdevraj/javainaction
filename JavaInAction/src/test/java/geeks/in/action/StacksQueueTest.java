@@ -1,6 +1,7 @@
 package geeks.in.action;
 
 
+import geeks.in.action.java.collections.stackqueue.QueueWithTwoStacks;
 import geeks.in.action.java.collections.stackqueue.SetOfStacks;
 import geeks.in.action.java.collections.stackqueue.SingleArrayStack;
 import geeks.in.action.java.collections.stackqueue.StackWithMin;
@@ -120,6 +121,26 @@ public class StacksQueueTest extends BaseTestCase{
         } catch (Exception e) {
             fail(e.getMessage());
         }
+    }
+
+    @Test
+    public void testQueueWithTwoStacks(){
+        QueueWithTwoStacks<Integer> obj = new QueueWithTwoStacks<Integer>();
+
+        obj.add(1);
+        obj.add(2);
+        obj.add(3);
+        obj.add(4);
+        obj.add(5);
+
+        assertEquals(Integer.valueOf(1), obj.poll());
+        assertEquals(Integer.valueOf(2), obj.peek());
+        assertEquals(Integer.valueOf(2), obj.poll());
+
+        obj.add(10);
+        assertEquals(Integer.valueOf(3), obj.poll());
+        obj.add(20);
+        assertEquals(Integer.valueOf(4), obj.peek());
     }
 
 
