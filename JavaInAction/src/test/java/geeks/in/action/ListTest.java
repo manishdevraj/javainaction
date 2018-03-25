@@ -2,10 +2,8 @@ package geeks.in.action;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import geeks.in.action.java.collections.list.DeleteNodeFromNode;
-import geeks.in.action.java.collections.list.Node;
-import geeks.in.action.java.collections.list.RemoveDuplicate;
-import geeks.in.action.java.collections.list.SearchFromLastNode;
+
+import geeks.in.action.java.collections.list.*;
 
 import org.junit.Test;
 
@@ -70,5 +68,55 @@ public class ListTest extends BaseTestCase {
 		DeleteNodeFromNode obj = new DeleteNodeFromNode();
 		assertTrue(obj.deleteByNode(n3));
 
+	}
+
+	@Test
+	public void testAddLinkedList() {
+		AddTwoLists obj = new AddTwoLists();
+
+		AddTwoLists.Link l1 = new AddTwoLists.Link(3);
+		l1.appendToTail(1);
+		l1.appendToTail(5);
+
+		AddTwoLists.Link l2 = new AddTwoLists.Link(5);
+		l2.appendToTail(9);
+		l2.appendToTail(2);
+
+		System.out.println("Link 1 : " + l1);
+		System.out.println("Link 2 : " + l2);
+
+		AddTwoLists.Link result = obj.addLists(l1, l2, 0);
+		System.out.println("Result : " + result);
+
+		assertEquals(Integer.valueOf(8), result.data);
+		assertEquals(Integer.valueOf(0), result.next.data);
+		assertEquals(Integer.valueOf(8), result.next.next.data);
+
+	}
+
+	@Test
+	public void testFindStartOfCircularList() {
+		CircularFindFirst.Link n1 = new CircularFindFirst.Link("A");
+		CircularFindFirst.Link n2 = new CircularFindFirst.Link("B");
+		CircularFindFirst.Link n3 = new CircularFindFirst.Link("C");
+		CircularFindFirst.Link n4 = new CircularFindFirst.Link("D");
+		CircularFindFirst.Link n5 = new CircularFindFirst.Link("E");
+
+		n1.next = n2;
+		n2.next = n3;
+
+		n3.next = n4;
+		n4.next = n5;
+		n5.next = n3;
+
+		System.out.println("Circular Link : " + n1);
+
+		CircularFindFirst obj = new CircularFindFirst();
+
+		CircularFindFirst.Link head = obj.findBegining(n1);
+
+		System.out.println("head : " + head);
+
+		assertEquals("C", head.data);
 	}
 }
