@@ -1,4 +1,4 @@
-package geeks.in.action.algo;
+package geeks.in.action.java.arr;
 
 /**
  * Write an efficient a program to find the sum of contiguous subarray within a

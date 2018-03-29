@@ -1,6 +1,6 @@
 package geeks.in.action;
 
-import geeks.in.action.algo.MissingNumArray;
+import geeks.in.action.java.arr.ArrayDuplicate;
 import geeks.in.action.algo.lrucache.LRUCache;
 import geeks.in.action.algo.lrucache.LRUCacheImpl;
 
@@ -17,7 +17,7 @@ public class AlgorithmTest extends BaseTestCase {
 	@Test
 	public void findMissingNumberinArray() {
 		final Integer[] array1 = { 1, 2, 3, 4, 5, 6, 7, 0, 9, 10 };
-		MissingNumArray obj = new MissingNumArray();
+		ArrayDuplicate.MissingNumArray obj = new ArrayDuplicate.MissingNumArray();
 		Number missingNumber = obj.findMissingNumber(array1);
 		System.out.println("Array is missing " + missingNumber);
 	}

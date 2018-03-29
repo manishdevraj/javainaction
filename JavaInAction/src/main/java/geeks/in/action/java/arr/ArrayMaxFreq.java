@@ -1,4 +1,4 @@
-package geeks.in.action.java.strings;
+package geeks.in.action.java.arr;
 
 /**
  * Given an array of n integers, we define its degree as the maximum frequency of any element in the array.

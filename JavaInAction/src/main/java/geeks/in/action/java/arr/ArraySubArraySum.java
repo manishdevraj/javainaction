@@ -1,4 +1,4 @@
-package geeks.in.action.java.strings;
+package geeks.in.action.java.arr;
 
 import java.util.Arrays;
 

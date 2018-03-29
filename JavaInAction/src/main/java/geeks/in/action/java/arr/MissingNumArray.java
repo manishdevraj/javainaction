@@ -1,4 +1,4 @@
-package geeks.in.action.algo;
+package geeks.in.action.java.arr;
 
 /**
  * Find missing number in an array
@@ -22,6 +22,17 @@ public class MissingNumArray {
 		}
 		missingNum = ((size + 1) * size) / 2 - sum;
 		return missingNum;
+	}
+
+	public int findMissingNumberBitWise(int[] numArray) {
+		int size = numArray.length;
+		int XOR = 0;
+		for(int i=0; i< size; i++) {
+			if (numArray[i] != 0)
+				XOR ^= numArray[i];
+			XOR ^= (i + 1);
+		}
+		return XOR;
 	}
 
 }

@@ -1,4 +1,4 @@
-package geeks.in.action.java.strings;
+package geeks.in.action.java.arr;
 
 /**
  *  Given an array of numbers find the index of the 3rd largest number.

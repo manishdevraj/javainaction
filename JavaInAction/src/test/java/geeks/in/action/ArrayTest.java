@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import geeks.in.action.java.strings.*;
+import geeks.in.action.java.arr.*;
 
 import java.util.Arrays;
 
@@ -112,6 +112,14 @@ public class ArrayTest extends BaseTestCase {
 		int arr2[] = {1, 1, 1};
 		System.out.println(Arrays.toString(arr2));
 		assertEquals(-1, obj.getThirdLargestIndex(arr2));
+	}
+
+	@Test
+	public void findMissingNumberinArray() {
+		final int[] array1 = { 1, 2, 3, 4, 5, 6, 7, 0, 9, 10 };
+		MissingNumArray obj = new MissingNumArray();
+		int missingNumber = obj.findMissingNumberBitWise(array1);
+		System.out.println("Array is missing " + missingNumber);
 	}
 
 

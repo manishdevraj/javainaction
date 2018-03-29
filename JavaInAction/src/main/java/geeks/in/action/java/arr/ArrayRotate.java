@@ -1,4 +1,4 @@
-package geeks.in.action.java.strings;
+package geeks.in.action.java.arr;
 
 /**
  * Given an image represented by an NxN matrix, where each pixel in the image is
