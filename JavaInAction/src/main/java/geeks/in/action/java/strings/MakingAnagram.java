@@ -15,30 +15,21 @@ import java.util.regex.*;
  * Created by manishdevraj on 03/04/18.
  */
 public class MakingAnagram {
-    public static int numberNeeded(String first, String second) {
-        int[] letters = new int[256];
-        int first_unique_chars = 0;
-        int sec_unique_chars = 0;
-        int num_completed = 0;
-        char[] f_array = first.toCharArray();
-        for (char c : f_array) { // count number of each char in first string.
-            if (letters[c] == 0)
-                ++first_unique_chars; //mark all of them unique
-            ++letters[c];
-        }
-        for (int i = 0; i < second.length(); ++i) {
-            int c = second.charAt(i);
-            if (letters[c] == 0) { // Found more of char c in second than in first.
-                ++sec_unique_chars;
-            } else {
-                --letters[c];
-                if (letters[c] == 0) {
-                    ++num_completed;
-                }
-            }
-        }
 
-        return (first_unique_chars - num_completed) + sec_unique_chars;
+    public static int numberNeeded(String first, String second) {
+        int[] letters = new int[26];
+        char[] firstCharArray = first.toCharArray();
+        char[] secCharArray = second.toCharArray();
+        for (int i = 0; i < first.length(); i++)
+            letters[firstCharArray[i] - 'a']++;
+
+        for (int i = 0; i < second.length(); i++)
+            letters[secCharArray[i] - 'a']--;
+
+        int result = 0;
+        for(int i = 0; i < letters.length; i++)
+            result += Math.abs(letters[i]);
+        return result;
     }
 
     public static void main(String[] args) {
